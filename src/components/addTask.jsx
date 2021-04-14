@@ -9,18 +9,23 @@ function AddTask() {
   const dispatch = useDispatch();
   const addTodo = async (e) => {
     e.preventDefault();
-    let payload = {
-      title: title,
-      description: description,
-      subtask: []
-    };
-    try {
-      let response = await dispatch(addTodoItem(payload));
-    } catch (err) {
-      console.log(err);
+    if(title===""){
+      window.alert("Add Task Title")
     }
-    setTitle(" ");
-    setDescription(" ");
+    else{
+      let payload = {
+        title: title,
+        description: description,
+        subtask: []
+      };
+      try {
+        let response = await dispatch(addTodoItem(payload));
+      } catch (err) {
+        console.log(err);
+      }
+      setTitle("");
+      setDescription("");
+    }
   };
   return (
     <div id="addTask">
@@ -35,6 +40,7 @@ function AddTask() {
             onChange={(e) => {
               setTitle(e.target.value);
             }}
+            required
           />
           <br />
         </>

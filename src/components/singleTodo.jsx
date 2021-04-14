@@ -64,7 +64,7 @@ function SingleTodo(props) {
     console.log(props.subtask.length,resultDoneTask.length);
   return (
     <>
-    {addSubtaskForm===true?(<form style={{width:"30%"}}><input type="text" placeholder="add sub task" name="subTaskTitle" onChange={e=>{setSubTaskTitle(e.target.value)}}/><button onClick={addSubTask}>Add Sub Task</button></form>):("")}
+    {addSubtaskForm===true?(<form style={{width:"60%",margin:"20px 20%"}}><input type="text" placeholder="add sub task" name="subTaskTitle" onChange={e=>{setSubTaskTitle(e.target.value)}}/><button style={{minWidth:"20%",minHeight:"30px"}}onClick={addSubTask}>Add Sub Task</button></form>):("")}
     {props.subtask.length===resultDoneTask.length && props.subtask.length>0?(
       <div className="singleTodo" style={{backgroundColor:"red"}}>
       <div className="info">
