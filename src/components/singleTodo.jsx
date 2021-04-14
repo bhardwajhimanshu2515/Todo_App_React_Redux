@@ -85,7 +85,7 @@ function SingleTodo(props) {
           props.subtask.map((item,index)=>(
             <div className="subTaskTitle">
               <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}}></input>
-              {item.subtaskTitle}
+              {item.done===true?(<strike>{item.subtaskTitle}</strike>):(<>{item.subtaskTitle}</>)}
             </div>
         ))
         ):(<></>)}
@@ -95,7 +95,7 @@ function SingleTodo(props) {
       <div className="singleTodo">
       <div className="info">
         <div className="todoInfo">
-          <div className="title">{props.title}</div>
+          <div className="title" style={{color:"#58d68d"}}>{props.title}</div>
           <div className="description">{props.description}</div>
         </div>
         <div className="othersFunc">
@@ -111,7 +111,7 @@ function SingleTodo(props) {
           props.subtask.map((item,index)=>(
             <div className="subTaskTitle">
               <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}}></input>
-              {item.subtaskTitle}
+              {item.done===true?(<strike>{item.subtaskTitle}</strike>):(<>{item.subtaskTitle}</>)}
             </div>
         ))
         ):(<></>)}
