@@ -4,7 +4,6 @@ import {deleteTodoItem,addSubTaskItem,compleSubTaskItem} from "../data/reducers/
 import { useDispatch } from "react-redux";
 function SingleTodo(props) {
   const [addSubtaskForm,setAddSubtaskForm]=useState(false);
-  const [whichTask,setWhichTask]=useState("");
   const [subTaskTitle,setSubTaskTitle]=useState("");
     const dispatch=useDispatch();
 
@@ -25,7 +24,7 @@ function SingleTodo(props) {
       e.preventDefault();
       setAddSubtaskForm(false);
       let payload={
-        index:whichTask,
+        index:props.id,
         data:{
           subtaskTitle:subTaskTitle,
           done:false
@@ -38,7 +37,6 @@ function SingleTodo(props) {
         console.log(err);
       }
       setSubTaskTitle("");
-      setWhichTask("");
     }
 
     //function for done sub task
@@ -64,7 +62,7 @@ function SingleTodo(props) {
     console.log(props.subtask.length,resultDoneTask.length);
   return (
     <>
-    {addSubtaskForm===true?(<form style={{width:"60%",margin:"20px 20%"}}><input type="text" placeholder="add sub task" name="subTaskTitle" onChange={e=>{setSubTaskTitle(e.target.value)}}/><button style={{minWidth:"20%",minHeight:"30px"}}onClick={addSubTask}>Add Sub Task</button></form>):("")}
+    {addSubtaskForm===true?(<form style={{width:"40%",margin:"20px 30%"}}><input type="text" placeholder="add sub task" name="subTaskTitle" onChange={e=>{setSubTaskTitle(e.target.value)}}/><button style={{width:"50%",minHeight:"30px",margin:"5px 25%"}}onClick={addSubTask}>Add Sub Task</button></form>):("")}
     {props.subtask.length===resultDoneTask.length && props.subtask.length>0?(
       <div className="singleTodo" style={{backgroundColor:"red"}}>
       <div className="info">
@@ -75,7 +73,6 @@ function SingleTodo(props) {
         <div className="othersFunc">
             <button onClick={e=>{
               setAddSubtaskForm(true)
-              setWhichTask(props.id)
               }}>+</button>
             <button onClick={e=>{deleteTodo(e,props.id)}}>x</button>
         </div>
@@ -101,7 +98,6 @@ function SingleTodo(props) {
         <div className="othersFunc">
             <button onClick={e=>{
               setAddSubtaskForm(true)
-              setWhichTask(props.id)
               }}>+</button>
             <button onClick={e=>{deleteTodo(e,props.id)}}>x</button>
         </div>
