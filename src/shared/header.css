@@ -1,0 +1,15 @@
+#header {
+    width: 100%;
+    height: 100px;
+    background-color: #85c1e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+  }
+  
