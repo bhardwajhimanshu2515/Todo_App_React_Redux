@@ -81,7 +81,12 @@ function SingleTodo(props) {
         {props.subtask.length>0?(
           props.subtask.map((item,index)=>(
             <div className="subTaskTitle">
-              <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}} checked></input>
+              {item.done===true?(
+                <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}} checked></input>
+              ):(
+                <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}}></input>
+              )}
+              
               {item.done===true?(<strike>{item.subtaskTitle}</strike>):(<>{item.subtaskTitle}</>)}
             </div>
         ))
@@ -106,7 +111,11 @@ function SingleTodo(props) {
         {props.subtask.length>0?(
           props.subtask.map((item,index)=>(
             <div className="subTaskTitle">
-              <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}}></input>
+              {item.done===true?(
+                <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}} checked></input>
+              ):(
+                <input type="checkbox" onChange={e=>{doneTask(e,props.id,index)}}></input>
+              )}
               {item.done===true?(<strike>{item.subtaskTitle}</strike>):(<>{item.subtaskTitle}</>)}
             </div>
         ))
